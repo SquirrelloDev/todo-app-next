@@ -1,5 +1,6 @@
 import classes from "@/sass/pages/todo_page.module.scss";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import AddTodoForm from "@/components/AddTodoForm";
 
 const Header = () => {
   return(
@@ -9,7 +10,7 @@ const Header = () => {
               <ThemeSwitch/>
           </div>
           <div>
-
+            <AddTodoForm/>
           </div>
       </header>
   )

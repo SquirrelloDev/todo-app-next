@@ -1,0 +1,10 @@
+@use '../utils' as *;
+.todo-input{
+  width: 100%;
+  font-size: 1.8rem;
+  font-family: $family;
+  margin-left: 1em;
+  background: none;
+  border: none;
+  outline: none;
+}
