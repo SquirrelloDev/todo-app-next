@@ -16,10 +16,13 @@
       align-items: center;
       padding: 1em;
       border-bottom: 1px solid $l-light-grayish-blue;
-      div{
+      .box{
         display: flex;
-        p{
+        &__text{
           margin-left: .5em;
+          &--checked{
+            text-decoration: line-through;
+          }
         }
         input[type='checkbox']{
           margin: 0;
