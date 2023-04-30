@@ -21,6 +21,33 @@
         p{
           margin-left: .5em;
         }
+        input[type='checkbox']{
+          margin: 0;
+          width: 20px;
+          height: 20px;
+          display: grid;
+          place-content: center;
+          border: 1px solid $l-light-grayish-blue;
+          border-radius: 50%;
+          appearance: none;
+          background-color: #fff;
+          cursor: pointer;
+          &::before{
+            content: url("../../images/icon-check.svg");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-image: $checkbox-bg;
+            transform: scale(0);
+            transition: transform .15s;
+          }
+          &:checked::before{
+            transform: scale(1);
+          }
+        }
       }
       button{
         padding: .15em;
