@@ -1,3 +1,4 @@
+@use "../utils" as *;
 *,*::before,*::after{
   box-sizing: border-box;
   margin: 0;
@@ -11,5 +12,7 @@ body{
   font-family: 'Josefin Sans', sans-serif;
 }
 main{
+  position: relative;
   min-height: 100vh;
+  background-color: $v-light-gray;
 }
