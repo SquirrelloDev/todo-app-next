@@ -1,0 +1,22 @@
+@use "../utils" as *;
+.header{
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  min-height: 45vh;
+  background-image: url('../../images/bg-mobile-light.jpg');
+  background-size: cover;
+  background-position: center;
+  &__head{
+    margin: 3em 2em;
+    display: flex;
+    justify-content: space-between;
+    &__heading{
+      text-transform: uppercase;
+      color: $v-light-gray;
+    }
+  }
+  &__form{
+
+  }
+}
