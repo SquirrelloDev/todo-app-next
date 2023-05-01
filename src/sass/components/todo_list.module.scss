@@ -33,9 +33,6 @@
           &--dark{
             color: $d-light-grayish-blue;
           }
-          &--checked{
-            text-decoration: line-through;
-          }
         }
         &__checkbox{
           margin: 0;
@@ -67,6 +64,10 @@
           &:checked::before{
             transform: scale(1);
           }
+          &:checked + .box__text{
+            text-decoration: line-through;
+            color: $d-v-grayish-blue2;
+          }
         }
       }
       button{
@@ -91,7 +92,10 @@
       background-color: $vd-desaturated-blue;
     }
     &__left{
-      color: $l-dark-grayish-blue
+      color: $l-dark-grayish-blue;
+      &--dark{
+        color: $d-dark-grayish-blue;
+      }
     }
     &__actions{
       &__action{
@@ -103,17 +107,38 @@
         font-size: 1.6rem;
         color: $l-dark-grayish-blue;
         display: none;
+        cursor: pointer;
+        transition: color .1s;
         @include respond-to('s'){
           display: inline-block;
         }
+        &:hover{
+          color: $l-v-dark-grayish-blue;
+        }
         &--active{
           color: $bright-blue;
+        }
+        &--dark{
+          color: $d-dark-grayish-blue;
+          &:hover{
+            color: $dh-light-grayish-blue;
+          }
         }
       }
     }
     &__clear{
       color: $l-dark-grayish-blue;
       cursor: pointer;
+      transition: color .1s;
+      &:hover{
+        color: $l-v-dark-grayish-blue;
+      }
+      &--dark{
+        color: $d-dark-grayish-blue;
+        &:hover{
+          color: $dh-light-grayish-blue;
+        }
+      }
     }
   }
   &__action-box{
@@ -141,10 +166,16 @@
       transition: color .1s;
       cursor: pointer;
       &:hover{
-        color: $bright-blue;
+        color: $l-v-dark-grayish-blue;
       }
       &--active{
         color: $bright-blue;
+      }
+      &--dark{
+        color: $d-dark-grayish-blue;
+        &:hover{
+          color: $dh-light-grayish-blue;
+        }
       }
     }
   }
@@ -152,9 +183,14 @@
     margin: 1.75em 0;
     text-align: center;
     color: $l-dark-grayish-blue;
-    transition: color .1s;
-    &:hover{
-    color: $bright-blue;
-    }
   }
+}
+.active{
+  margin: 0 .45em;
+  padding: .25em;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  font-family: $family;
+  color: $bright-blue;
 }
