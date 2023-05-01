@@ -27,6 +27,11 @@
       letter-spacing: 10px;
       color: $v-light-gray;
     }
+    &__switch{
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
   }
   .form-box{
     width: 90%;
