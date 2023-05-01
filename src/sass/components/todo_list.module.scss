@@ -20,6 +20,7 @@
       align-items: center;
       padding: 1em;
       border-bottom: 1px solid $l-light-grayish-blue;
+      word-break: break-word;
       .box{
         display: flex;
         &__text{
@@ -68,6 +69,7 @@
     padding: 1em;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.6rem;
     background-color: #fff;
     border-bottom-right-radius: 8px;
