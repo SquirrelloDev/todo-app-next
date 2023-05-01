@@ -9,7 +9,7 @@ const Header = () => {
               <h1 className={classes.header__head__heading}>todo</h1>
               <ThemeSwitch/>
           </div>
-          <div>
+          <div className={classes['form-box']}>
             <AddTodoForm/>
           </div>
       </header>

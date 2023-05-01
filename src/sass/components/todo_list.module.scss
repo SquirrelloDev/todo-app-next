@@ -5,6 +5,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
+  max-width: 800px;
   background-color: #fff;
   border-radius: 8px;
   //box-shadow: 0 0 5px rgba(0,0,0, .4);
@@ -56,10 +57,28 @@
         padding: .15em;
         border: 1px solid transparent;
         background: none;
+        cursor: pointer;
       }
     }
   }
   &__summary{
-
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    &__left{
+      color: $l-dark-grayish-blue
+    }
+    &__actions{
+      &__action{
+        margin: 0 .45em;
+        color: $l-dark-grayish-blue;
+        &--active{
+          color: $bright-blue;
+        }
+      }
+    }
+    &__clear{
+      color: $l-dark-grayish-blue
+    }
   }
 }

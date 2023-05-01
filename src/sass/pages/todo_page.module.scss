@@ -2,12 +2,15 @@
 .header{
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-height: 45vh;
   background-image: url('../../images/bg-mobile-light.jpg');
   background-size: cover;
   background-position: center;
   &__head{
     margin: 3em 1.25em;
+    width: 90%;
+    max-width: 800px;
     display: flex;
     justify-content: space-between;
     &__heading{
@@ -16,6 +19,10 @@
       color: $v-light-gray;
     }
   }
+  .form-box{
+    width: 90%;
+    max-width: 800px;
+  }
   &__form{
     display: flex;
     justify-content: center;
@@ -23,7 +30,8 @@
     &__input-box{
       padding: 1em 2em;
       position: relative;
-      width: 90%;
+      width: 100%;
+      max-width: 800px;
       display: flex;
       justify-content: space-between;
       background-color: $v-light-gray;
@@ -32,7 +40,7 @@
         content: '';
         position: absolute;
         top: 26px;
-        left: 25px;
+        left: 28px;
         transform: translate(-50%,-50%);
         width: 20px;
         height: 20px;

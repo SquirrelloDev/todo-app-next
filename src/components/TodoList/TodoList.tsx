@@ -8,10 +8,15 @@ const TodoList = () => {
               <TodoItem/>
               <TodoItem/>
               <TodoItem/>
-
           </ul>
           <div className={classes.todolist__summary}>
-              <span>Tasks: 5</span>
+              <span className={classes.todolist__summary__left}>5 items left</span>
+              <div className={classes.todolist__summary__actions}>
+                  <span className={classes.todolist__summary__actions__action}>All</span>
+                  <span className={classes.todolist__summary__actions__action}>Active</span>
+                  <span className={classes.todolist__summary__actions__action}>Completed</span>
+              </div>
+              <span className={classes.todolist__summary__clear}>Clear completed</span>
           </div>
       </div>
   )
