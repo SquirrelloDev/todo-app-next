@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import classes from '@/sass/pages/todo_page.module.scss'
 import Header from "@/components/Header";
+import TodoList from "@/components/TodoList/TodoList";
 
 export default function Home() {
     return (
@@ -13,7 +14,7 @@ export default function Home() {
             </Head>
             <main>
                 <Header/>
-                <p>Test fontu</p>
+                <TodoList/>
             </main>
         </>
 )

@@ -1,5 +1,6 @@
 import classes from "@/sass/pages/todo_page.module.scss";
 import ThemeSwitch from "@/components/ThemeSwitch";
+import AddTodoForm from "@/components/AddTodoForm";
 
 const Header = () => {
   return(
@@ -8,8 +9,8 @@ const Header = () => {
               <h1 className={classes.header__head__heading}>todo</h1>
               <ThemeSwitch/>
           </div>
-          <div>
-
+          <div className={classes['form-box']}>
+            <AddTodoForm/>
           </div>
       </header>
   )
