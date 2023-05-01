@@ -2,10 +2,11 @@ import Head from 'next/head'
 import classes from '@/sass/pages/todo_page.module.scss'
 import Header from "@/components/Header";
 import TodoList from "@/components/TodoList/TodoList";
+import ThemeProvider from "@/context/ThemeProvider";
 
 export default function Home() {
     return (
-        <>
+        <ThemeProvider>
             <Head>
                 <title>Todo app</title>
                 <meta name="description" content="Todo app built with nextjs"/>
@@ -16,6 +17,6 @@ export default function Home() {
                 <Header/>
                 <TodoList/>
             </main>
-        </>
+        </ThemeProvider>
 )
 }
