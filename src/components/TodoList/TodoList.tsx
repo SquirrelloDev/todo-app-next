@@ -14,9 +14,9 @@ const TodoList = () => {
           <div className={classes.todolist__summary}>
               <span className={classes.todolist__summary__left}>5 items left</span>
               <div className={classes.todolist__summary__actions}>
-                  <span className={classes.todolist__summary__actions__action}>All</span>
-                  <span className={classes.todolist__summary__actions__action}>Active</span>
-                  <span className={classes.todolist__summary__actions__action}>Completed</span>
+                  <button className={classes.todolist__summary__actions__action}>All</button>
+                  <button className={classes.todolist__summary__actions__action}>Active</button>
+                  <button className={classes.todolist__summary__actions__action}>Completed</button>
               </div>
               <span className={classes.todolist__summary__clear}>Clear completed</span>
           </div>
