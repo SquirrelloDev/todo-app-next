@@ -6,14 +6,15 @@
   transform: translateX(-50%);
   width: 90%;
   max-width: 800px;
-  //border-radius: 8px;
-  //box-shadow: 0 0 5px rgba(0,0,0, .4);
   &__list{
     list-style-type: none;
     background-color: #fff;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     box-shadow: 0 0 5px rgba(0,0,0,.2);
+    &--dark{
+      background-color: $vd-desaturated-blue;
+    }
     &__item{
       display: flex;
       justify-content: space-between;
@@ -21,15 +22,22 @@
       padding: 1em;
       border-bottom: 1px solid $l-light-grayish-blue;
       word-break: break-word;
+      &--dark{
+        border-color: $d-v-grayish-blue2;
+      }
       .box{
         display: flex;
+        align-items: center;
         &__text{
           margin-left: .5em;
+          &--dark{
+            color: $d-light-grayish-blue;
+          }
           &--checked{
             text-decoration: line-through;
           }
         }
-        input[type='checkbox']{
+        &__checkbox{
           margin: 0;
           width: 20px;
           height: 20px;
@@ -40,6 +48,10 @@
           appearance: none;
           background-color: #fff;
           cursor: pointer;
+          &--dark{
+            border-color: $d-v-grayish-blue;
+            background-color: $vd-desaturated-blue;
+          }
           &::before{
             content: url("../../images/icon-check.svg");
             display: flex;
@@ -75,6 +87,9 @@
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     box-shadow: 0 3px 7px rgba(0,0,0,.2);
+    &--dark{
+      background-color: $vd-desaturated-blue;
+    }
     &__left{
       color: $l-dark-grayish-blue
     }
@@ -111,6 +126,9 @@
     border-radius: 8px;
     @include respond-to('s'){
       display: none;
+    }
+    &--dark{
+      background-color: $vd-desaturated-blue;
     }
     &__action{
       margin: 0 .45em;

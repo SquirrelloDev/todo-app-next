@@ -1,12 +1,14 @@
 import React, {ReactNode, useEffect, useState} from "react";
 type themeCtxType = {
-    isDarkTheme: boolean
+    isDarkTheme: boolean,
+    changeTheme: () => void
 }
 interface ContextProps{
     children: ReactNode
 }
 export const themeContext = React.createContext<themeCtxType>({
-    isDarkTheme: false
+    isDarkTheme: false,
+    changeTheme: () => {}
 });
 const ThemeProvider = ({children}: ContextProps) => {
     const [isDark, setIsDark] = useState<boolean>(false);
@@ -15,8 +17,12 @@ const ThemeProvider = ({children}: ContextProps) => {
         const mq = window.matchMedia('(prefers-color-scheme: dark)').matches;
         setIsDark(mq);
     }, [])
+    const changeTheme = () =>{
+        setIsDark(prevState => !prevState);
+    }
     const finalValue: themeCtxType = {
-        isDarkTheme: isDark
+        isDarkTheme: isDark,
+        changeTheme
     }
   return (
       <themeContext.Provider value={finalValue}>{children}</themeContext.Provider>
