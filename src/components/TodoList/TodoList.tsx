@@ -3,13 +3,14 @@ import classes from "@/sass/components/todo_list.module.scss"
 import ActionBox from "@/components/ActionBox";
 import {useContext, useState} from "react";
 import {themeContext} from "@/context/ThemeProvider";
+import {MongoClient} from "mongodb";
 
 export enum SortType {
     ALL,
     ACTIVE,
     COMPLETED
 }
-const TodoList = () => {
+const TodoList = (props) => {
     const {isDarkTheme} = useContext(themeContext);
     const [sortType, setSortType] = useState<number>(SortType.ALL);
     const listClass = isDarkTheme ? `${classes.todolist__list} ${classes['todolist__list--dark']}`: classes.todolist__list;
@@ -31,7 +32,7 @@ const TodoList = () => {
                 break;
         }
     }
-
+    console.log(props.myTodos);
     return (
       <div className={classes.todolist}>
           <ul className={listClass}>
@@ -55,4 +56,5 @@ const TodoList = () => {
       </div>
   )
 }
+
 export default TodoList;
