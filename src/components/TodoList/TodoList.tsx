@@ -4,7 +4,7 @@ import ActionBox from "@/components/ActionBox";
 import {useContext, useState} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 
-enum SortType {
+export enum SortType {
     ALL,
     ACTIVE,
     COMPLETED
@@ -17,7 +17,7 @@ const TodoList = () => {
     const summaryTextClass =  isDarkTheme ? ` ${classes.todolist__summary__actions__action} ${classes['todolist__summary__actions__action--dark']}` : classes.todolist__summary__actions__action;
     const clearClass = isDarkTheme ? `${classes.todolist__summary__clear} ${classes['todolist__summary__clear--dark']}` : classes.todolist__summary__clear
     const leftClass = isDarkTheme ? `${classes.todolist__summary__left} ${classes['todolist__summary__left--dark']}` : classes.todolist__summary__left
-    let summaryTextClassActive = `${summaryTextClass} ${classes['todolist__summary__actions__action--active']}`;
+    const summaryTextClassActive = `${summaryTextClass} ${classes['todolist__summary__actions__action--active']}`;
     const changeSortTypeHandler = (e) => {
         switch(e.target.id){
             case 'all':
@@ -50,7 +50,7 @@ const TodoList = () => {
               </div>
               <span className={clearClass}>Clear completed</span>
           </div>
-          <ActionBox/>
+          <ActionBox sortType={sortType} setSortType={setSortType}/>
           <p className={classes.todolist__info}>Drag and drop to reorder list</p>
       </div>
   )
