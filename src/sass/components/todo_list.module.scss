@@ -45,10 +45,6 @@
           appearance: none;
           background-color: #fff;
           cursor: pointer;
-          &--dark{
-            border-color: $d-v-grayish-blue;
-            background-color: $vd-desaturated-blue;
-          }
           &::before{
             content: url("../../images/icon-check.svg");
             display: flex;
@@ -67,6 +63,18 @@
           &:checked + .box__text{
             text-decoration: line-through;
             color: $d-v-grayish-blue2;
+          }
+          &:hover{
+            background: linear-gradient(white, white) padding-box,
+            $checkbox-bg border-box;
+          }
+          &--dark{
+            border-color: $d-v-grayish-blue;
+            background-color: $vd-desaturated-blue;
+            &:hover{
+              background: linear-gradient($vd-desaturated-blue, $vd-desaturated-blue) padding-box,
+              $checkbox-bg border-box;
+            }
           }
         }
       }
