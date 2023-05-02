@@ -7,6 +7,15 @@
   background-image: url('../../images/bg-mobile-light.jpg');
   background-size: cover;
   background-position: center;
+  @include respond-to('l'){
+    background-image: url('../../images/bg-desktop-light.jpg');
+  }
+  &--dark{
+    background-image: url('../../images/bg-mobile-dark.jpg');
+    @include respond-to('l'){
+      background-image: url('../../images/bg-desktop-dark.jpg');
+    }
+  }
   &__head{
     margin: 3em 1.25em;
     width: 90%;
@@ -17,6 +26,11 @@
       text-transform: uppercase;
       letter-spacing: 10px;
       color: $v-light-gray;
+    }
+    &__switch{
+      background: none;
+      border: none;
+      cursor: pointer;
     }
   }
   .form-box{
@@ -46,6 +60,12 @@
         height: 20px;
         border: 1px solid $l-light-grayish-blue;
         border-radius: 50%;
+      }
+      &--dark{
+        background-color: $vd-desaturated-blue;
+        &::before{
+          border-color: $d-v-grayish-blue;
+        }
       }
     }
   }
