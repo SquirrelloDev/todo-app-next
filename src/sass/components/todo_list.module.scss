@@ -115,14 +115,14 @@
         &:hover{
           color: $l-v-dark-grayish-blue;
         }
-        &--active{
-          color: $bright-blue;
-        }
         &--dark{
           color: $d-dark-grayish-blue;
           &:hover{
             color: $dh-light-grayish-blue;
           }
+        }
+        &--active{
+          color: $bright-blue;
         }
       }
     }
@@ -184,13 +184,4 @@
     text-align: center;
     color: $l-dark-grayish-blue;
   }
-}
-.active{
-  margin: 0 .45em;
-  padding: .25em;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  font-family: $family;
-  color: $bright-blue;
 }

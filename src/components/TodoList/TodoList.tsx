@@ -17,7 +17,7 @@ const TodoList = () => {
     const summaryTextClass =  isDarkTheme ? ` ${classes.todolist__summary__actions__action} ${classes['todolist__summary__actions__action--dark']}` : classes.todolist__summary__actions__action;
     const clearClass = isDarkTheme ? `${classes.todolist__summary__clear} ${classes['todolist__summary__clear--dark']}` : classes.todolist__summary__clear
     const leftClass = isDarkTheme ? `${classes.todolist__summary__left} ${classes['todolist__summary__left--dark']}` : classes.todolist__summary__left
-
+    let summaryTextClassActive = `${summaryTextClass} ${classes['todolist__summary__actions__action--active']}`;
     const changeSortTypeHandler = (e) => {
         switch(e.target.id){
             case 'all':
@@ -44,9 +44,9 @@ const TodoList = () => {
           <div className={summaryClass}>
               <span className={leftClass}>5 items left</span>
               <div className={classes.todolist__summary__actions}>
-                  <button id={'all'} className={sortType !== SortType.ALL ? summaryTextClass : `${classes.active}`} onClick={changeSortTypeHandler}>All</button>
-                  <button id={'active'} className={sortType !== SortType.ACTIVE ? summaryTextClass : `${classes.active}`} onClick={changeSortTypeHandler}>Active</button>
-                  <button id={'completed'} className={sortType !== SortType.COMPLETED ? summaryTextClass : `${classes.active}`} onClick={changeSortTypeHandler}>Completed</button>
+                  <button id={'all'} className={sortType !== SortType.ALL ? summaryTextClass : summaryTextClassActive} onClick={changeSortTypeHandler}>All</button>
+                  <button id={'active'} className={sortType !== SortType.ACTIVE ? summaryTextClass : summaryTextClassActive} onClick={changeSortTypeHandler}>Active</button>
+                  <button id={'completed'} className={sortType !== SortType.COMPLETED ? summaryTextClass : summaryTextClassActive} onClick={changeSortTypeHandler}>Completed</button>
               </div>
               <span className={clearClass}>Clear completed</span>
           </div>
