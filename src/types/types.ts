@@ -1,8 +1,4 @@
-export enum SortType {
-    ALL,
-    ACTIVE,
-    COMPLETED
-}
+export type SortType = "all" | "active" | "completed"
 export type Todo = {
     id: string,
     name: string | undefined,
