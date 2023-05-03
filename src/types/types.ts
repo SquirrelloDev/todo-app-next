@@ -5,7 +5,7 @@ export enum SortType {
 }
 export type Todo = {
     id: string,
-    name: string,
+    name: string | undefined,
     status: "active" | "completed"
 }
 export type TodoPostData = {
