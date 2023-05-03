@@ -3,12 +3,13 @@ import crossImg from '@/images/icon-cross.svg'
 import Image from "next/image";
 import {useContext, useRef} from "react";
 import {themeContext} from "@/context/ThemeProvider";
+import {Todo} from "@/types/types";
 interface TodoItemProps{
     id: string,
     todoName: string | undefined,
     status: "active" | "completed",
     deleteTodoFn: (id: string) => void,
-    changeStatusFn: (id: string) => void
+    changeStatusFn: (todoData:Todo) => void
 }
 const TodoItem = ({id, todoName, status, deleteTodoFn,changeStatusFn}:TodoItemProps) => {
     const {isDarkTheme} = useContext(themeContext);
@@ -18,11 +19,19 @@ const TodoItem = ({id, todoName, status, deleteTodoFn,changeStatusFn}:TodoItemPr
     const deleteTodoHandler = () => {
       deleteTodoFn(id);
     }
+    const changeStatus = () =>{
+        const todoData = {
+            id,
+            name: todoName,
+            status: status
+        }
+        changeStatusFn(todoData);
+    }
     return (
     <li>
       <div className={liClass}>
         <div className={classes.box}>
-          <input type='checkbox' defaultChecked={status === "completed"}  className={checkboxClass}/>
+          <input type='checkbox' onChange={changeStatus} defaultChecked={status === "completed"}  className={checkboxClass}/>
           <p className={textClass}>{todoName}</p>
         </div>
         <button onClick={deleteTodoHandler}><Image src={crossImg} alt={"close button icon"}/></button>

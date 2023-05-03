@@ -9,7 +9,7 @@ import useTodo from "@/hooks/use-todo";
 interface TodolistProps {
     todos: Todo[],
     deleteTodoFn: (id: string) => void,
-    changeStatusFn: (id: string) => void
+    changeStatusFn: (todoData: Todo) => void
 }
 
 const TodoList = ({todos, deleteTodoFn, changeStatusFn}:TodolistProps) => {
@@ -38,7 +38,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn}:TodolistProps) => {
     return (
       <div className={classes.todolist}>
           <ul className={listClass}>
-              {todos.map(todoItem => <TodoItem key={todoItem.id} id={todoItem.id} status={todoItem.status} todoName={todoItem.name} deleteTodoFn={deleteTodoFn}/>)}
+              {todos.map(todoItem => <TodoItem key={todoItem.id} id={todoItem.id} status={todoItem.status} todoName={todoItem.name} deleteTodoFn={deleteTodoFn} changeStatusFn={changeStatusFn}/>)}
           </ul>
           <div className={summaryClass}>
               <span className={leftClass}>{todos.length} items left</span>
