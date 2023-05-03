@@ -23,7 +23,7 @@ const useTodo = (todos:Todo[]) => {
     }
     const deleteTodo = async (id: string) => {
         console.log(id);
-        await fetch(`/api/todos/${id}`, {method: 'DELETE', body: JSON.stringify({id: id}), headers:{'Content-Type': 'application/json'}});
+        await fetch(`/api/todos/${id}`, {method: 'DELETE', headers:{'Content-Type': 'application/json'}});
       // const info = await res.json();
       // console.log(info);
       setTodoItems(await getUpdatedTodos())
@@ -41,6 +41,10 @@ const useTodo = (todos:Todo[]) => {
       await fetch(`/api/todos/${cacheTodo.id}`, {method: 'PUT', body: JSON.stringify(cacheTodo), headers:{'Content-Type': 'application/json'}});
       setTodoItems(updatatedTodos);
     }
-    return {todoItems, addTodo, deleteTodo, setStatus}
+    const clearCompletedTodos = async () => {
+      await fetch('/api/todos', {method: 'DELETE'});
+      setTodoItems(await getUpdatedTodos())
+    }
+    return {todoItems, addTodo, deleteTodo, setStatus, clearCompletedTodos}
 }
 export default useTodo;

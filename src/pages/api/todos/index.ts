@@ -24,4 +24,11 @@ export default async function handler(req,res){
         })
         res.status(200).json(processedTodos);
     }
+    if(req.method === 'DELETE'){
+        const client = await MongoClient.connect("mongodb+srv://test_user:CyIxNuOeNZX4xzmf@mycluster.tw0suos.mongodb.net/?retryWrites=true&w=majority")
+        const db = await client.db('todos')
+        const todosCollection = await db.collection('todos');
+        const deletedItems = await todosCollection.deleteMany({status: "completed"})
+        res.status(200).json({deletedItems})
+    }
 }

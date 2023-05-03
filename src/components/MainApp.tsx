@@ -7,11 +7,11 @@ import {Todo} from "@/types/types";
 
 const MainApp = ({todos}) => {
     const {isDarkTheme} = useContext(themeContext);
-    const {todoItems, addTodo, deleteTodo, setStatus} = useTodo<Todo>(todos);
+    const {todoItems, addTodo, deleteTodo, setStatus, clearCompletedTodos} = useTodo<Todo>(todos);
   return (
       <main className={isDarkTheme ? 'dark' : ''}>
           <Header addTodoHandler={addTodo}/>
-          <TodoList todos={todoItems} deleteTodoFn={deleteTodo} changeStatusFn={setStatus}/>
+          <TodoList todos={todoItems} deleteTodoFn={deleteTodo} changeStatusFn={setStatus} clearCompletedHandler={clearCompletedTodos}/>
       </main>
 
   )

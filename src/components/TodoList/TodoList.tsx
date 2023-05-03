@@ -9,10 +9,11 @@ import useTodo from "@/hooks/use-todo";
 interface TodolistProps {
     todos: Todo[],
     deleteTodoFn: (id: string) => void,
-    changeStatusFn: (todoData: Todo) => void
+    changeStatusFn: (todoData: Todo) => void,
+    clearCompletedHandler: () => void
 }
 
-const TodoList = ({todos, deleteTodoFn, changeStatusFn}:TodolistProps) => {
+const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:TodolistProps) => {
     const {isDarkTheme} = useContext(themeContext);
     const [sortType, setSortType] = useState<number>(0);
     const listClass = isDarkTheme ? `${classes.todolist__list} ${classes['todolist__list--dark']}`: classes.todolist__list;
@@ -35,6 +36,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn}:TodolistProps) => {
                 break;
         }
     }
+
     return (
       <div className={classes.todolist}>
           <ul className={listClass}>
@@ -47,7 +49,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn}:TodolistProps) => {
                   <button id={'active'} className={sortType !== 1 ? summaryTextClass : summaryTextClassActive} onClick={changeSortTypeHandler}>Active</button>
                   <button id={'completed'} className={sortType !== 2 ? summaryTextClass : summaryTextClassActive} onClick={changeSortTypeHandler}>Completed</button>
               </div>
-              <span className={clearClass}>Clear completed</span>
+              <span onClick={clearCompletedHandler} className={clearClass}>Clear completed</span>
           </div>
           <ActionBox sortType={sortType} setSortType={setSortType}/>
           <p className={classes.todolist__info}>Drag and drop to reorder list</p>
