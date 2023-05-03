@@ -1,7 +1,7 @@
 import classes from "@/sass/components/todo_list.module.scss"
 import {useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
-import {SortType} from "@/components/TodoList/TodoList";
+import {SortType} from "@/types/types";
 
 interface ActionBoxProps {
     sortType: number
@@ -27,9 +27,9 @@ const ActionBox = ({sortType, setSortType}:ActionBoxProps) => {
     }
   return (
       <div className={actionBoxClass}>
-          <button id={'all'} onClick={changeSortTypeHandler} className={sortType !== SortType.ALL ? actionClass : actionClassActive}>All</button>
-          <button id={'active'} onClick={changeSortTypeHandler} className={sortType !== SortType.ACTIVE ? actionClass : actionClassActive}>Active</button>
-          <button id={'completed'} onClick={changeSortTypeHandler} className={sortType !== SortType.COMPLETED ? actionClass : actionClassActive}>Completed</button>
+          <button id={'all'} onClick={changeSortTypeHandler} className={sortType !== 0 ? actionClass : actionClassActive}>All</button>
+          <button id={'active'} onClick={changeSortTypeHandler} className={sortType !== 1 ? actionClass : actionClassActive}>Active</button>
+          <button id={'completed'} onClick={changeSortTypeHandler} className={sortType !== 2 ? actionClass : actionClassActive}>Completed</button>
       </div>
   )
 }
