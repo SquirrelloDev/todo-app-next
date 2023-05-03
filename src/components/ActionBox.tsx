@@ -1,10 +1,10 @@
 import classes from "@/sass/components/todo_list.module.scss"
 import {useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
-import {SortType} from "@/components/TodoList/TodoList";
+import {SortType} from "@/types/types";
 
 interface ActionBoxProps {
-    sortType: number
+    sortType: SortType
     setSortType: (sortType: SortType) => void
 }
 const ActionBox = ({sortType, setSortType}:ActionBoxProps) => {
@@ -13,23 +13,13 @@ const ActionBox = ({sortType, setSortType}:ActionBoxProps) => {
     const actionClass = isDarkTheme ? `${classes['todolist__action-box__action']} ${classes['todolist__action-box__action--dark']}` : classes['todolist__action-box__action'];
     const actionClassActive = `${actionClass} ${classes['todolist__action-box__action--active']}`
     const changeSortTypeHandler = (e) => {
-        switch(e.target.id){
-            case 'all':
-                setSortType(SortType.ALL);
-                break;
-            case 'active':
-                setSortType(SortType.ACTIVE);
-                break;
-            case 'completed':
-                setSortType(SortType.COMPLETED);
-                break;
-        }
+        setSortType(e)
     }
   return (
       <div className={actionBoxClass}>
-          <button id={'all'} onClick={changeSortTypeHandler} className={sortType !== SortType.ALL ? actionClass : actionClassActive}>All</button>
-          <button id={'active'} onClick={changeSortTypeHandler} className={sortType !== SortType.ACTIVE ? actionClass : actionClassActive}>Active</button>
-          <button id={'completed'} onClick={changeSortTypeHandler} className={sortType !== SortType.COMPLETED ? actionClass : actionClassActive}>Completed</button>
+          <button id={'all'} onClick={changeSortTypeHandler} className={sortType !== "all" ? actionClass : actionClassActive}>All</button>
+          <button id={'active'} onClick={changeSortTypeHandler} className={sortType !== "active" ? actionClass : actionClassActive}>Active</button>
+          <button id={'completed'} onClick={changeSortTypeHandler} className={sortType !== "completed" ? actionClass : actionClassActive}>Completed</button>
       </div>
   )
 }

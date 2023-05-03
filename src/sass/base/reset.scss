@@ -15,6 +15,7 @@ main{
   position: relative;
   min-height: 100vh;
   background-color: $v-light-gray;
+  overflow-y: scroll;
 }
 .dark{
   background-color: $v-dark-blue;

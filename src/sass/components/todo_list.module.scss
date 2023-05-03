@@ -85,6 +85,13 @@
         cursor: pointer;
       }
     }
+    &__fallback{
+      padding: 1em 0;
+      text-align: center;
+      &--dark{
+        color: #ffffff;
+      }
+    }
   }
   &__summary{
     padding: 1em;
