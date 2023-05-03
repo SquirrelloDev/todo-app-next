@@ -1,5 +1,6 @@
 import {Todo, TodoPostData} from "@/types/types";
 import {useState} from "react";
+import {headers} from "next/headers";
 
 const useTodo = <T>(todos:T[]) => {
     const [todoItems, setTodoItems] = useState<T[]>(todos);
@@ -20,13 +21,14 @@ const useTodo = <T>(todos:T[]) => {
         console.log(cacheTodo);
         await fetch('/api/todos', {method: 'POST', body: JSON.stringify(todoData), headers:{'Content-Type': 'application/json'}});
         setTodoItems(await getUpdatedTodos());
-        // await setTodoItems(data);
-        // fetch('/api/todos', {method: 'POST', body: JSON.stringify(todoData), headers:{'Content-Type': 'application/json'}}).then(res =>{
-        //     fetch('/api/todos').then(ress => ress.json()).then(data => console.log(data))
-        //     }
-        // );
-        // setTodoItems(prevState => [...prevState, cacheTodo])
     }
-    return {todoItems, addTodo}
+    const deleteTodo = async (id: string) => {
+        console.log(id);
+        await fetch(`/api/todos/${id}`, {method: 'DELETE', body: JSON.stringify({id: id}), headers:{'Content-Type': 'application/json'}});
+      // const info = await res.json();
+      // console.log(info);
+      setTodoItems(await getUpdatedTodos())
+    }
+    return {todoItems, addTodo, deleteTodo}
 }
 export default useTodo;

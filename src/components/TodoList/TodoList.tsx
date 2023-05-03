@@ -6,9 +6,13 @@ import {themeContext} from "@/context/ThemeProvider";
 import {MongoClient} from "mongodb";
 import {SortType, Todo} from "@/types/types";
 import useTodo from "@/hooks/use-todo";
+interface TodolistProps {
+    todos: Todo[],
+    deleteTodoFn: (id: string) => void,
+    changeStatusFn: (id: string) => void
+}
 
-
-const TodoList = ({todos}) => {
+const TodoList = ({todos, deleteTodoFn, changeStatusFn}:TodolistProps) => {
     const {isDarkTheme} = useContext(themeContext);
     const [sortType, setSortType] = useState<number>(0);
     const listClass = isDarkTheme ? `${classes.todolist__list} ${classes['todolist__list--dark']}`: classes.todolist__list;
@@ -34,7 +38,7 @@ const TodoList = ({todos}) => {
     return (
       <div className={classes.todolist}>
           <ul className={listClass}>
-              {todos.map(todoItem => <TodoItem key={todoItem.id} status={todoItem.status} todoName={todoItem.name}/>)}
+              {todos.map(todoItem => <TodoItem key={todoItem.id} id={todoItem.id} status={todoItem.status} todoName={todoItem.name} deleteTodoFn={deleteTodoFn}/>)}
           </ul>
           <div className={summaryClass}>
               <span className={leftClass}>{todos.length} items left</span>
