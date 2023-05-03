@@ -12,9 +12,6 @@ interface TodolistProps {
     changeStatusFn: (todoData: Todo) => void,
     clearCompletedHandler: () => void
 }
-type ReducerAction = {
-    type: SortType
-}
 
 const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:TodolistProps) => {
     const {isDarkTheme} = useContext(themeContext);
@@ -25,6 +22,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:T
     const summaryTextClass =  isDarkTheme ? ` ${classes.todolist__summary__actions__action} ${classes['todolist__summary__actions__action--dark']}` : classes.todolist__summary__actions__action;
     const clearClass = isDarkTheme ? `${classes.todolist__summary__clear} ${classes['todolist__summary__clear--dark']}` : classes.todolist__summary__clear
     const leftClass = isDarkTheme ? `${classes.todolist__summary__left} ${classes['todolist__summary__left--dark']}` : classes.todolist__summary__left
+    const fallbackClass = isDarkTheme ? `${classes.todolist__list__fallback} ${classes['todolist__list__fallback--dark']}` : classes.todolist__list__fallback
     const summaryTextClassActive = `${summaryTextClass} ${classes['todolist__summary__actions__action--active']}`;
 
 
@@ -47,6 +45,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:T
       <div className={classes.todolist}>
           <ul className={listClass}>
               {todoItems.map(todoItem => <TodoItem key={todoItem.id} id={todoItem.id} status={todoItem.status} todoName={todoItem.name} deleteTodoFn={deleteTodoFn} changeStatusFn={changeStatusFn}/>)}
+              {todoItems.length === 0 && <li className={fallbackClass}>No todos in the {sortType} category :(</li>}
           </ul>
           <div className={summaryClass}>
               <span className={leftClass}>{todos.length} items left</span>
