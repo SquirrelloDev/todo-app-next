@@ -5,12 +5,14 @@ import {useContext, useEffect, useReducer, useState} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 import {MongoClient} from "mongodb";
 import {SortType, Todo} from "@/types/types";
+import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 import useTodo from "@/hooks/use-todo";
 interface TodolistProps {
     todos: Todo[],
     deleteTodoFn: (id: string) => void,
     changeStatusFn: (todoData: Todo) => void,
-    clearCompletedHandler: () => void
+    clearCompletedHandler: () => void,
+
 }
 
 const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:TodolistProps) => {
@@ -40,13 +42,40 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:T
         }
         setTodoItems(filteredTodos)
     }, [sortType, todos])
+    
+    const onDragEnd = (result):void => {
+        const {draggableId, source, destination} = result;
+
+        //if we don't have a destination object (e.g. item was out of dragging context bounds), then do nothing
+        if (!destination){
+            return;
+        }
+        //if the item has the same destination index (meaning we haven't moved the item into new position) then do nothing
+        if(destination.droppableId === source.droppableId && destination.index === source.index){
+            return;
+        }
+        let updatedOrder = todos;
+        const draggedTodo = todos.find(todo => todo.id === draggableId);
+        //delete one item from arr (if delete count = 1 then delete the starting index item)
+        updatedOrder.splice(source.index, 1);
+        //at the destination index, don't delete anything, however insert the item at that index
+        updatedOrder.splice(destination.index, 0, draggedTodo);
+        console.log(updatedOrder);
+        setTodoItems(updatedOrder);
+    }
 
     return (
+        <DragDropContext onDragEnd={onDragEnd}>
       <div className={classes.todolist}>
-          <ul className={listClass}>
-              {todoItems.map(todoItem => <TodoItem key={todoItem.id} id={todoItem.id} status={todoItem.status} todoName={todoItem.name} deleteTodoFn={deleteTodoFn} changeStatusFn={changeStatusFn}/>)}
-              {todoItems.length === 0 && <li className={fallbackClass}>No todos in the {sortType} category :(</li>}
-          </ul>
+          <Droppable droppableId={'todoDrag'}>
+              {(provided,snapshot) => (
+                  <ul className={listClass} ref={provided.innerRef} {...provided.droppableProps}>
+                      {todoItems.map((todoItem, index) => <TodoItem key={todoItem.id} index={index} id={todoItem.id} status={todoItem.status} todoName={todoItem.name} deleteTodoFn={deleteTodoFn} changeStatusFn={changeStatusFn}/>)}
+                      {todoItems.length === 0 && <li className={fallbackClass}>No todos in the {sortType} category :(</li>}
+                      {provided.placeholder}
+                  </ul>
+              ) }
+          </Droppable>
           <div className={summaryClass}>
               <span className={leftClass}>{todos.length} items left</span>
               <div className={classes.todolist__summary__actions}>
@@ -59,6 +88,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:T
           <ActionBox sortType={sortType} setSortType={changeSortTypeHandler}/>
           <p className={classes.todolist__info}>Drag and drop to reorder list</p>
       </div>
+        </DragDropContext>
   )
 }
 

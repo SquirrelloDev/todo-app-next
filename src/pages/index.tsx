@@ -5,6 +5,7 @@ import TodoList from "@/components/TodoList/TodoList";
 import ThemeProvider from "@/context/ThemeProvider";
 import MainApp from "@/components/MainApp";
 import {MongoClient} from "mongodb";
+import {resetServerContext} from "react-beautiful-dnd";
 
 export default function Home(props) {
     return (
@@ -26,6 +27,7 @@ export const getStaticProps = async () => {
         const todosCollection = await db.collection('todos');
         const allTodos = await todosCollection.find({}).toArray();
         await client.close();
+        resetServerContext();
         return{
             props: {
                 myTodos: allTodos.map(myTodo => {
