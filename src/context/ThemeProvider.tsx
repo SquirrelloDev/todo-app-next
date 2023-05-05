@@ -1,4 +1,5 @@
 import React, {ReactNode, useEffect, useState} from "react";
+
 type themeCtxType = {
     isDarkTheme: boolean,
     changeTheme: () => void

@@ -1,12 +1,11 @@
 import TodoItem from "@/components/TodoList/TodoItem";
 import classes from "@/sass/components/todo_list.module.scss"
 import ActionBox from "@/components/ActionBox";
-import {useContext, useEffect, useReducer, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {themeContext} from "@/context/ThemeProvider";
-import {MongoClient} from "mongodb";
 import {SortType, Todo} from "@/types/types";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
-import useTodo from "@/hooks/use-todo";
+
 interface TodolistProps {
     todos: Todo[],
     deleteTodoFn: (id: string) => void,

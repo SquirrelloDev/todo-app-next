@@ -4,6 +4,7 @@ import Image from "next/image";
 import {useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 import classes from "@/sass/pages/todo_page.module.scss";
+
 const ThemeSwitch = () => {
     const {isDarkTheme, changeTheme} = useContext(themeContext);
   return(

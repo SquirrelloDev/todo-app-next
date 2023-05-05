@@ -1,7 +1,4 @@
 import Head from 'next/head'
-import classes from '@/sass/pages/todo_page.module.scss'
-import Header from "@/components/Header";
-import TodoList from "@/components/TodoList/TodoList";
 import ThemeProvider from "@/context/ThemeProvider";
 import MainApp from "@/components/MainApp";
 import {MongoClient} from "mongodb";

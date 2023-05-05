@@ -1,10 +1,11 @@
 import classes from "@/sass/components/todo_list.module.scss"
 import crossImg from '@/images/icon-cross.svg'
 import Image from "next/image";
-import {useContext, useRef} from "react";
+import {useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 import {Todo} from "@/types/types";
-import {Draggable, DroppableStateSnapshot} from "react-beautiful-dnd";
+import {Draggable} from "react-beautiful-dnd";
+
 interface TodoItemProps{
     id: string,
     todoName: string | undefined,

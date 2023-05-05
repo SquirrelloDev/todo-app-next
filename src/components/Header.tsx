@@ -3,7 +3,8 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import AddTodoForm from "@/components/AddTodoForm";
 import {useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
-import {Todo, TodoPostData} from "@/types/types";
+import {TodoPostData} from "@/types/types";
+
 interface HeaderProps {
     addTodoHandler: (todoData:TodoPostData) => void
 }

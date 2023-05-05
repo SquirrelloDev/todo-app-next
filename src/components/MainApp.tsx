@@ -3,7 +3,6 @@ import TodoList from "@/components/TodoList/TodoList";
 import {useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 import useTodo from "@/hooks/use-todo";
-import {Todo} from "@/types/types";
 import {Toaster} from "react-hot-toast";
 
 const MainApp = ({todos}) => {
