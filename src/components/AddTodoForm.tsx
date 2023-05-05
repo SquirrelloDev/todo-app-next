@@ -18,6 +18,7 @@ const AddTodoForm = ({addTodoHandler}:TodoFormProps) => {
           name: inputRef.current?.value,
           status: "active"
       }
+      inputRef.current.value = '';
       addTodoHandler(dataObj);
     }
     return(
