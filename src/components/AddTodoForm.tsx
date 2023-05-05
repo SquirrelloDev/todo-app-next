@@ -3,6 +3,7 @@ import formClasses from "@/sass/pages/todo_page.module.scss"
 import {useContext, useRef} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 import {TodoPostData} from "@/types/types";
+import toast from "react-hot-toast";
 
 interface TodoFormProps {
     addTodoHandler: (todoData:TodoPostData) => void
@@ -14,6 +15,10 @@ const AddTodoForm = ({addTodoHandler}:TodoFormProps) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const sendTodoData = (e: any) => {
       e.preventDefault();
+      if(inputRef.current?.value === ''){
+          toast.error("No Todo name provided");
+          return;
+      }
       const dataObj:TodoPostData = {
           name: inputRef.current?.value,
           status: "active"
