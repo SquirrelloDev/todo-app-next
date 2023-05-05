@@ -18,7 +18,7 @@ const AddTodoForm = ({addTodoHandler}:TodoFormProps) => {
           name: inputRef.current?.value,
           status: "active"
       }
-      addTodoHandler(dataObj);
+      const test = addTodoHandler(dataObj);
     }
     return(
       <form onSubmit={sendTodoData} className={formClasses.header__form}>
