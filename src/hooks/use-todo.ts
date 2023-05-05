@@ -19,7 +19,6 @@ const useTodo = (todos:Todo[]) => {
             status: "active"
         }
         console.log(cacheTodo);
-        // setTodoItems(prevState => [...prevState, cacheTodo]);
         const res = await fetch('/api/todos', {method: 'POST', body: JSON.stringify(todoData), headers:{'Content-Type': 'application/json'}});
         if(res.status === 201){
             toast.dismiss(loadingToast);
