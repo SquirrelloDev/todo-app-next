@@ -1,5 +1,5 @@
 import classes from "@/sass/components/todo_list.module.scss"
-import {useContext} from "react";
+import {SyntheticEvent, useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 import {SortType} from "@/types/types";
 
@@ -12,7 +12,7 @@ const ActionBox = ({sortType, setSortType}:ActionBoxProps) => {
     const actionBoxClass = isDarkTheme ? `${classes['todolist__action-box']} ${classes['todolist__action-box--dark']}` : classes['todolist__action-box'];
     const actionClass = isDarkTheme ? `${classes['todolist__action-box__action']} ${classes['todolist__action-box__action--dark']}` : classes['todolist__action-box__action'];
     const actionClassActive = `${actionClass} ${classes['todolist__action-box__action--active']}`
-    const changeSortTypeHandler = (e) => {
+    const changeSortTypeHandler = (e:any) => {
         setSortType(e)
     }
   return (

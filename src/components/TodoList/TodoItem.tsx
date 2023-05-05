@@ -9,7 +9,7 @@ import {Draggable} from "react-beautiful-dnd";
 interface TodoItemProps{
     id: string,
     todoName: string | undefined,
-    status: "active" | "completed",
+    status: "active" | "completed" | "all",
     deleteTodoFn: (id: string) => void,
     changeStatusFn: (todoData:Todo) => void,
     index:number,

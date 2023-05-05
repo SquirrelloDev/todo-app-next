@@ -1,7 +1,6 @@
 import {MongoClient} from "mongodb";
-import {NextApiRequest} from "next";
-
-export default async function handler(req: NextApiRequest,res){
+import {NextApiRequest, NextApiResponse} from "next";
+export default async function handler(req: NextApiRequest,res:NextApiResponse){
     if(req.method === 'POST'){
         try{
             const client = await MongoClient.connect("mongodb+srv://test_user:CyIxNuOeNZX4xzmf@mycluster.tw0suos.mongodb.net/?retryWrites=true&w=majority")

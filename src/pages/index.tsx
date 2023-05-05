@@ -3,8 +3,11 @@ import ThemeProvider from "@/context/ThemeProvider";
 import MainApp from "@/components/MainApp";
 import {MongoClient} from "mongodb";
 import {resetServerContext} from "react-beautiful-dnd";
-
-export default function Home(props) {
+import {Todo} from "@/types/types";
+interface HomeProps {
+    myTodos: Todo[]
+}
+export default function Home(props:HomeProps) {
     return (
         <ThemeProvider>
             <Head>

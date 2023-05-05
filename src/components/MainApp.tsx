@@ -4,8 +4,11 @@ import {useContext} from "react";
 import {themeContext} from "@/context/ThemeProvider";
 import useTodo from "@/hooks/use-todo";
 import {Toaster} from "react-hot-toast";
-
-const MainApp = ({todos}) => {
+import {Todo} from "@/types/types";
+interface MainAppProps {
+    todos: Todo[]
+}
+const MainApp = ({todos}:MainAppProps) => {
     const {isDarkTheme} = useContext(themeContext);
     const {todoItems, addTodo, deleteTodo, setStatus, clearCompletedTodos} = useTodo(todos);
   return (

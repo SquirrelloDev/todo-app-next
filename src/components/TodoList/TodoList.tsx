@@ -3,7 +3,7 @@ import classes from "@/sass/components/todo_list.module.scss"
 import ActionBox from "@/components/ActionBox";
 import {useContext, useEffect, useState} from "react";
 import {themeContext} from "@/context/ThemeProvider";
-import {SortType, Todo} from "@/types/types";
+import {DragEndResult, SortType, Todo} from "@/types/types";
 import {DragDropContext, Droppable} from 'react-beautiful-dnd'
 
 interface TodolistProps {
@@ -27,7 +27,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:T
     const summaryTextClassActive = `${summaryTextClass} ${classes['todolist__summary__actions__action--active']}`;
 
 
-    const changeSortTypeHandler = (e) => {
+    const changeSortTypeHandler = (e:any) => {
         setSortType(e.target.id);
     }
     useEffect(() => {
@@ -42,7 +42,7 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:T
         setTodoItems(filteredTodos)
     }, [sortType, todos])
     
-    const onDragEnd = (result):void => {
+    const onDragEnd = (result: DragEndResult) => {
         const {draggableId, source, destination} = result;
 
         //if we don't have a destination object (e.g. item was out of dragging context bounds), then do nothing
@@ -55,10 +55,12 @@ const TodoList = ({todos, deleteTodoFn, changeStatusFn, clearCompletedHandler}:T
         }
         let updatedOrder = todos;
         const draggedTodo = todos.find(todo => todo.id === draggableId);
-        //delete one item from arr (if delete count = 1 then delete the starting index item)
-        updatedOrder.splice(source.index, 1);
-        //at the destination index, don't delete anything, however insert the item at that index
-        updatedOrder.splice(destination.index, 0, draggedTodo);
+        if(draggedTodo){
+            //delete one item from arr (if delete count = 1 then delete the starting index item)
+            updatedOrder.splice(source.index, 1);
+            //at the destination index, don't delete anything, however insert the item at that index
+            updatedOrder.splice(destination.index, 0, draggedTodo);
+        }
         console.log(updatedOrder);
         setTodoItems(updatedOrder);
     }

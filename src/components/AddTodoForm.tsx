@@ -12,13 +12,13 @@ const AddTodoForm = ({addTodoHandler}:TodoFormProps) => {
     const formBoxClass = isDarkTheme ? `${formClasses['header__form__input-box']} ${formClasses['header__form__input-box--dark']}` : formClasses['header__form__input-box'];
     const inputClass = isDarkTheme ? `${inputClasses['todo-input']} ${inputClasses['todo-input--dark']}` : inputClasses['todo-input'];
     const inputRef = useRef<HTMLInputElement | null>(null);
-    const sendTodoData = (e) => {
+    const sendTodoData = (e: any) => {
       e.preventDefault();
       const dataObj:TodoPostData = {
           name: inputRef.current?.value,
           status: "active"
       }
-      inputRef.current.value = '';
+      inputRef.current!.value = '';
       addTodoHandler(dataObj);
     }
     return(
