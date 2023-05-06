@@ -82,7 +82,7 @@ My next step is to work a little more with Next and use more of its potential, a
 
 ### Useful resources
 
-- [Egghead.io react-beatiful-dnd course](https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd) - Great place to get started with this drag and drop libray (even if it is written in class components)
+- [Egghead.io react-beatiful-dnd course](https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd) - Great place to get started with this drag and drop library (even if it is written in class components)
 
 ## Author
 
