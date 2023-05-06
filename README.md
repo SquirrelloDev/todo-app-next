@@ -54,7 +54,7 @@ Users should be able to:
 - [Css modules](https://github.com/css-modules/css-modules) - For styles
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database) - As a cloud database
 - [React beatiful dnd](https://github.com/atlassian/react-beautiful-dnd) - For the drag and drop feature
-- [React hot toast](https://react-hot-toast.com/) - Simple library tomake a toasts faster
+- [React hot toast](https://react-hot-toast.com/) - Simple library to make a toasts faster
 
 ### What I learned
 
