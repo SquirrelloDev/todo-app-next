@@ -1,38 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Mentor - Todo app solution
 
-## Getting Started
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+- [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+- [Author](#author)
+
+**Note: Delete this note and update the table of contents based on what sections you keep.**
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- Toggle light and dark mode
+- **Bonus**: Drag and drop to reorder items on the list
+
+### Screenshot
+
+![](./screenshot.png)
+
+### Links
+
+- Repository URL [here](https://github.com/SquirrelloDev/todo-app-next)
+- Live Site URL [here](https://todo-app-next-1qwo9a2hx-squirrello-maker.vercel.app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Mobile-first workflow
+- TypeScript
+- [React](https://reactjs.org/) - JS library
+- [Next.js](https://nextjs.org/) - React framework
+- [Css modules](https://github.com/css-modules/css-modules) - For styles
+- [MongoDB Atlas](https://www.mongodb.com/atlas/database) - As a cloud database
+- [React beatiful dnd](https://github.com/atlassian/react-beautiful-dnd) - For the drag and drop feature
+
+### What I learned
+
+This project helped me to understand how beneficial the TypeScript is. I saw the benefits while the built-in Next linter was throwing multiple errors (especially in places where i forgot to set the type 😅).
+
+I've also learned that the documentation is your best friend when it comes to typing all the custom variables from various dependencies.
+For example the **result** parameter from react beatiful dnd has a specific architecture, but the documentation hasn't a one concrete type, so I'd to type on my own using at least some useful parts.
+```ts
+export type DragEndResult = {
+    draggableId: string,
+    type: string,
+    reason: string,
+    source: {
+        droppableId: string,
+        index: number
+    },
+    destination: DraggableLocation | null | undefined
+}
 ```
+Moreover, I'm now more used to **Static Site Generation mechanism** in the Next.js and how **API routes** work
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Continued development
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+My next step is to work a little more with Next and use more of its potential, and I'm think that the API countries will be a great playground for that.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Useful resources
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [Egghead.io react-beatiful-dnd course](https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd) - Great place to get started with this drag and drop libray (even if it is written in class components)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Author
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Frontend Mentor - [@SquirrelloDev](https://www.frontendmentor.io/profile/SquirrelloDev) - more of my projects from this platform
